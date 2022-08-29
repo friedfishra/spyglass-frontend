@@ -60,16 +60,18 @@
                 </ng-template>
                 <ng-template pTemplate="rowexpansion" let-goal>
                     <tr>
-                        <td>
-                            <div>
-                                {{goal.imagePath}}
-                            </div>
-                        </td>
-                        <td>
-                            <div>
-                                {{goal.description}}
-                            </div>
-                        </td>
+                        <th><div class="flex justify-content-center align-items-center">
+                            <img [src]="'assets/' + goal.imagePath" [alt]="goal.name" width="100" class="shadow-4" /></div>
+                        </th>
+                        
+                        <th>
+                            <div class="flex justify-content-center align-items-center">Description <p-sortIcon field="targetDate"></p-sortIcon></div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td><div>
+                            
+                        </div></td>
                     </tr>
                 </ng-template>
             </p-table>
