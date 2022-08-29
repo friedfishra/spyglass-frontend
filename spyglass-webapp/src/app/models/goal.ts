@@ -6,6 +6,7 @@ export class Goal {
     targetDate: Date;
     targetAmount: number;
     currentAmount: number;
+    status: string;
 
     constructor (
         id: number = 0,
@@ -15,6 +16,7 @@ export class Goal {
         targetDate: Date = new Date(),
         targetAmount: number = 0,
         currentAmount: number = 0,
+        status: string = 'incomplete'
 
     ){
         this.id = id;
@@ -24,5 +26,6 @@ export class Goal {
         this.targetDate = targetDate;
         this.targetAmount = targetAmount;
         this.currentAmount = currentAmount;
+        this.status = status;
     }
 }

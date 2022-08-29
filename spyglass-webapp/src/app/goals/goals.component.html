@@ -1,1 +1,61 @@
-<p>goals works!</p>
+<p-table [value]="goals" dataKey="id" responsiveLayout="scroll">
+    <ng-template pTemplate="header">
+        <tr>
+            <th style="width: 3rem"></th>
+            <th pSortableColumn="name">Name <p-sortIcon field="name"></p-sortIcon></th>
+            <th>Image</th>
+            <th pSortableColumn="targetDate">Target Date <p-sortIcon field="targetDate"></p-sortIcon></th>
+            <th pSortableColumn="targetAmount">Target Amount <p-sortIcon field="targetAmount"></p-sortIcon></th>
+            <th pSortableColumn="currentAmount">Current Amount <p-sortIcon field="currentAmount"></p-sortIcon></th>
+            <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-goal let-expanded="expanded">
+        <tr>
+            <td>
+                <button type="button" pButton pRipple [pRowToggler]="goal" class="p-button-text p-button-rounded p-button-plain" [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
+            </td>
+            <td>{{goal.name}}</td>
+            <td><img [src]="'assets/' + goal.image" [alt]="goal.name" width="100" class="shadow-4" /></td>
+            <td>{{goal.targetDate}</td>
+            <td>{{goal.targetAmount | currency: 'USD'}}</td>
+            <td>{{goal.currentAmount | currency: 'USD'}}</td>
+            <td><span [class]="'goal-badge status-' + goal.status.toLowerCase()">{{goal.status}}</span></td>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="rowexpansion" let-goal>
+        <tr>
+            <td colspan="7">
+                <div class="p-3">
+                    <p-table [value]="goal.description" dataKey="id">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th pSortableColumn="id">Id <p-sortIcon field="price"></p-sortIcon></th>
+                                <th pSortableColumn="customer">Customer <p-sortIcon field="customer"></p-sortIcon></th>
+                                <th pSortableColumn="date">Date <p-sortIcon field="date"></p-sortIcon></th>
+                                <th pSortableColumn="amount">Amount <p-sortIcon field="amount"></p-sortIcon></th>
+                                <th pSortableColumn="status">Status <p-sortIcon field="status"></p-sortIcon></th>
+                                <th style="width: 4rem"></th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-order>
+                            <tr>
+                                <td>{{order.id}}</td>
+                                <td>{{order.customer}}</td>
+                                <td>{{order.id}}</td>
+                                <td>{{order.amount | currency:'USD'}}</td>
+                                <td><span [class]="'order-badge order-' + order.status.toLowerCase()">{{order.status}}</span></td>
+                                <td><p-button type="button" icon="pi pi-search"></p-button></td>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="emptymessage">
+                            <tr>
+                                <td colspan="6">There are no order for this product yet.</td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </td>
+        </tr>
+    </ng-template>
+</p-table>
