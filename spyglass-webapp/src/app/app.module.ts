@@ -31,6 +31,8 @@ import {InputNumberModule} from 'primeng/inputnumber';
 import {TabViewModule} from 'primeng/tabview';
 import {SelectButtonModule} from 'primeng/selectbutton';
 import {MessagesModule} from 'primeng/messages';
+import {FileUploadModule} from 'primeng/fileupload';
+import {ToastModule} from 'primeng/toast'
 
 @NgModule({
   declarations: [
@@ -64,7 +66,9 @@ import {MessagesModule} from 'primeng/messages';
     InputNumberModule,
     TabViewModule,
     SelectButtonModule,
-    MessagesModule
+    MessagesModule,
+    FileUploadModule,
+    ToastModule
 
   ],
   providers: [],

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Goal } from '../models/goal';
 import { GoalService } from '../services/goal.service';
+import { ConfirmationService } from 'primeng/api';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-goals',
@@ -8,14 +10,34 @@ import { GoalService } from '../services/goal.service';
   styleUrls: ['./goals.component.css']
 })
 export class GoalsComponent implements OnInit {
+  goalDialog: boolean;
+
   goals: Array<Goal>;
+
+  selectedGoals: Array<Goal>;
+
+  statuses: any[];
 
   constructor(private service: GoalService) {
     this.goals = [];
-    
+    this.selectedGoals = [];
+    this.statuses = [
+      {label: 'INCOMPLETE', value: 'incomplete'},
+      {label: 'COMPLETE', value: 'complete'},
+      {label: 'EXPIRED', value: 'expired'}
+    ];
+    this.goalDialog = false;
    }
 
   ngOnInit(): void {
+    this.goals.push(new Goal())
   }
 
+  newGoal() {
+
+  }
+
+  deleteSelectedGoals(){
+
+  }
 }
