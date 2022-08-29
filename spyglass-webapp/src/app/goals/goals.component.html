@@ -59,18 +59,22 @@
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="rowexpansion" let-goal>
-                    <tr>
-                        <th><div class="flex justify-content-center align-items-center">
-                            <img [src]="'assets/' + goal.imagePath" [alt]="goal.name" width="100" class="shadow-4" /></div>
+                    <!-- <tr>
+                        <th>
+                            <div class="flex justify-content-center align-items-center">Image</div>
                         </th>
                         
                         <th>
                             <div class="flex justify-content-center align-items-center">Description <p-sortIcon field="targetDate"></p-sortIcon></div>
                         </th>
-                    </tr>
+                    </tr> -->
                     <tr>
                         <td><div>
-                            
+                            <div class="flex justify-content-center align-items-center">
+                                <img [src]="'assets/' + goal.imagePath" [alt]="goal.name" width="100" class="shadow-4" /></div>
+                        </div></td>
+                        <td><div class="flex justify-content-center align-items-center">
+                            {{goal.description}}
                         </div></td>
                     </tr>
                 </ng-template>
