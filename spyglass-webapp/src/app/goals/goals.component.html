@@ -5,7 +5,7 @@
         <p-card>
             <p-toolbar styleClass="mb-4">
                 <ng-template pTemplate="left">
-                    <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2" (click)="newGoal()"></button>
+                    <button pButton pRipple label="New" icon="pi pi-plus" class="p-button-success mr-2" (click)="clickedNew()"></button>
                     <button pButton pRipple label="Delete" icon="pi pi-trash" class="p-button-danger" (click)="deleteSelectedGoals()" [disabled]="!selectedGoals || !selectedGoals.length"></button>
                 </ng-template>
         
@@ -17,10 +17,10 @@
         
             <p-table #dt [value]="goals" dataKey="id" responsiveLayout="scroll" [paginator]="true" [rows]="5" [rowsPerPageOptions]="[5,10,20]"
             [filterDelay]="0" [globalFilterFields]="['name', 'targetDate', 'targetAmount', 'currentAmount', 'status', ]"
-            [totalRecords]="totalRecords" [pageLinks]="3" [loading]="loading" styleClass="p-datatable-gridlines">
+            [totalRecords]="totalRecords" [pageLinks]="3" [loading]="loading" >
                 <ng-template pTemplate="caption">
                     <div class="flex align-items-center justify-content-between">
-                        <h5 class="m-0">Manage Goals</h5>
+                        <h2 class="m-0">Manage Goals</h2>
                         <span class="p-input-icon-left">
                             <i class="pi pi-search"></i>
                             <input pInputText type="text" (input)="dt.filterGlobal($any($event.target).value, 'contains')" placeholder="Search..." />
@@ -30,6 +30,9 @@
                 <ng-template pTemplate="header">
                     <tr>
                         <th style="width: 3rem"></th>
+                        <th>
+
+                        </th>
                         <th pSortableColumn="name">
                             <div class="flex justify-content-center align-items-center">
 
@@ -42,7 +45,7 @@
                         </th>
                         <th pSortableColumn="targetAmount"><div class="flex justify-content-center align-items-center">Target Amount <p-sortIcon field="targetAmount"></p-sortIcon></div>
                         </th>
-                        <th pSortableColumn="currentAmount"><div class="flex justify-content-center align-items-center">Current Amount <p-sortIcon field="currentAmount"></p-sortIcon></div>
+                        <th pSortableColumn="currentAmount"><div class="flex justify-content-center align-items-center">Amount Saved <p-sortIcon field="currentAmount"></p-sortIcon></div>
                         </th>
                         <th pSortableColumn="status"><div class="flex justify-content-center align-items-center">Status <p-sortIcon field="status"></p-sortIcon></div>
                         </th>
@@ -53,6 +56,10 @@
                         <td>
                             <button type="button" pButton pRipple [pRowToggler]="goal" class="p-button-text p-button-rounded p-button-plain" [icon]="expanded ? 'pi pi-chevron-down' : 'pi pi-chevron-right'"></button>
                         </td>
+                        <td><div>
+                            <div class="flex justify-content-center align-items-center">
+                                <img [src]="'assets/' + goal.imagePath" [alt]="goal.name" width="100" class="shadow-4" /></div>
+                        </div></td>
                         <td><div class="flex justify-content-center align-items-center">{{goal.name}}</div></td>
                         <td><div class="flex justify-content-center align-items-center">{{goal.targetDate | date: 'mediumDate'}}</div></td>
                         <td><div class="flex justify-content-center align-items-center">{{goal.targetAmount | currency: 'USD'}}</div></td>
@@ -71,10 +78,7 @@
                         </th>
                     </tr> -->
                     <tr>
-                        <td><div>
-                            <div class="flex justify-content-center align-items-center">
-                                <img [src]="'assets/' + goal.imagePath" [alt]="goal.name" width="100" class="shadow-4" /></div>
-                        </div></td>
+                        
                         <td><div class="flex justify-content-center align-items-center">
                             {{goal.description}}
                         </div></td>
@@ -82,6 +86,28 @@
                 </ng-template>
             </p-table>
         </p-card>
+    </div>
+    <div *ngIf="displayModal">
+        <p-dialog header="Header" [(visible)]="displayModal" [modal]="true" 
+            [draggable]="false" [resizable]="false" [closable]="isCloseable">
+            <ng-template pTemplate="header">
+                <div class="flex justify-content-center text-xl font-bold" style="margin: 0 0 0 8px">
+                    New Goal
+                </div>
+            </ng-template>
+            <ng-template pTemplate="body">
+                <input id="name" type="text" pInputText placeholder="Name">
+                <p-calendar id="targetDate" placeholder="Target Date" [(ngModel)]="newGoal.targetDate"></p-calendar>
+                
+    
+            </ng-template>
+            <ng-template pTemplate="footer">
+                
+                <p-button icon="pi pi-user-plus" label="Cancel" styleClass="p-button-text"></p-button>
+                <p-button icon="pi pi-check"  (click)="createGoal()"  label="Create" styleClass="p-button-text"></p-button>
+            
+            </ng-template>
+        </p-dialog>
     </div>
 
 </div>

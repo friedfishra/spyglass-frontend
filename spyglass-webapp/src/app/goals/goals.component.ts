@@ -11,17 +11,20 @@ import {FilterService} from 'primeng/api';
   styleUrls: ['./goals.component.css']
 })
 export class GoalsComponent implements OnInit {
+  displayModal :boolean = false;
+  isCloseable :boolean= false;
   loading :boolean = true;
   totalRecords :number = 0;
   goalDialog: boolean;
 
   goals: Array<Goal>;
-
+  newGoal: Goal;
   selectedGoals: Array<Goal>;
 
   statuses: any[];
 
   constructor(private service: GoalService) {
+    this.newGoal = new Goal();
     this.goals = [];
     this.selectedGoals = [];
     this.statuses = [
@@ -41,7 +44,12 @@ export class GoalsComponent implements OnInit {
     this.totalRecords = this.goals.length;
   }
 
-  newGoal() {
+  clickedNew() {
+    this.displayModal = true;
+    this.isCloseable = true;
+  }
+
+  createGoal() {
 
   }
 
