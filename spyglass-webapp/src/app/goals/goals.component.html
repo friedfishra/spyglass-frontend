@@ -58,7 +58,7 @@
                         </td>
                         <td><div>
                             <div class="flex justify-content-center align-items-center">
-                                <img [src]="'assets/' + goal.imagePath" [alt]="goal.name" width="100" class="shadow-4" /></div>
+                                <img [src]="'assets/' + goal.imagePath" [alt]="goal.name" width="200" class="shadow-4" /></div>
                         </div></td>
                         <td><div class="flex justify-content-center align-items-center">{{goal.name}}</div></td>
                         <td><div class="flex justify-content-center align-items-center">{{goal.targetDate | date: 'mediumDate'}}</div></td>
@@ -68,20 +68,13 @@
                     </tr>
                 </ng-template>
                 <ng-template pTemplate="rowexpansion" let-goal>
-                    <!-- <tr>
-                        <th>
-                            <div class="flex justify-content-center align-items-center">Image</div>
-                        </th>
-                        
-                        <th>
-                            <div class="flex justify-content-center align-items-center">Description <p-sortIcon field="targetDate"></p-sortIcon></div>
-                        </th>
-                    </tr> -->
+                    
                     <tr>
-                        
-                        <td><div class="flex justify-content-center align-items-center">
+                        <td colspan="7">
+                            <div >
                             {{goal.description}}
-                        </div></td>
+                            </div>
+                        </td>
                     </tr>
                 </ng-template>
             </p-table>
@@ -90,20 +83,33 @@
     <div *ngIf="displayModal">
         <p-dialog header="Header" [(visible)]="displayModal" [modal]="true" 
             [draggable]="false" [resizable]="false" [closable]="isCloseable">
-            <ng-template pTemplate="header">
+            <ng-template pTemplate="header" width="500">
                 <div class="flex justify-content-center text-xl font-bold" style="margin: 0 0 0 8px">
                     New Goal
                 </div>
             </ng-template>
             <ng-template pTemplate="body">
-                <input id="name" type="text" pInputText placeholder="Name">
-                <p-calendar id="targetDate" placeholder="Target Date" [(ngModel)]="newGoal.targetDate"></p-calendar>
+                <div class="vertical">
+                    <div>
+                        <label for="name" class="col-4">Name: </label>
+                        <input id="name" type="text" pInputText placeholder="Name">
+                    </div>
+                    <div>
+                        <label for="targetDate" class="col-4">Target Date: </label>
+                        <p-calendar id="targetDate" placeholder="Target Date" [(ngModel)]="newGoal.targetDate"></p-calendar>
+                    </div>
+                    <div>
+                        <label for="name" class="col-4">Target Amount: </label>
+                        <input id="name" type="text" pInputText placeholder="Name">
+                    </div>
+
                 
+                </div>
     
             </ng-template>
             <ng-template pTemplate="footer">
                 
-                <p-button icon="pi pi-user-plus" label="Cancel" styleClass="p-button-text"></p-button>
+                <p-button icon="pi pi-user-plus" label="Upload Image" styleClass="p-button-text"></p-button>
                 <p-button icon="pi pi-check"  (click)="createGoal()"  label="Create" styleClass="p-button-text"></p-button>
             
             </ng-template>
