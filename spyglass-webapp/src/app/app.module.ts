@@ -32,7 +32,8 @@ import {TabViewModule} from 'primeng/tabview';
 import {SelectButtonModule} from 'primeng/selectbutton';
 import {MessagesModule} from 'primeng/messages';
 import {FileUploadModule} from 'primeng/fileupload';
-import {ToastModule} from 'primeng/toast'
+import {ToastModule} from 'primeng/toast';
+import {FilterService} from 'primeng/api';
 
 @NgModule({
   declarations: [

@@ -8,7 +8,7 @@ import { Goal } from '../models/goal';
 })
 export class GoalService {
 
-  baseUrl: string = 'http://localhost:8080/goal'
+  baseUrl: string = 'http://localhost:8080/goals'
 
   constructor(private http: HttpClient) { }
 

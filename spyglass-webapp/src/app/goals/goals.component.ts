@@ -3,6 +3,7 @@ import { Goal } from '../models/goal';
 import { GoalService } from '../services/goal.service';
 import { ConfirmationService } from 'primeng/api';
 import { MessageService } from 'primeng/api';
+import {FilterService} from 'primeng/api';
 
 @Component({
   selector: 'app-goals',
@@ -10,6 +11,8 @@ import { MessageService } from 'primeng/api';
   styleUrls: ['./goals.component.css']
 })
 export class GoalsComponent implements OnInit {
+  loading :boolean = true;
+  totalRecords :number = 0;
   goalDialog: boolean;
 
   goals: Array<Goal>;
@@ -31,6 +34,11 @@ export class GoalsComponent implements OnInit {
 
   ngOnInit(): void {
     this.goals.push(new Goal())
+    this.service.getAll().subscribe(resp => this.goals = resp)
+    console.log(this.goals);
+
+    this.loading = false;
+    this.totalRecords = this.goals.length;
   }
 
   newGoal() {
