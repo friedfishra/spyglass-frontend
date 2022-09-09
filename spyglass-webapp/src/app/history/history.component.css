@@ -1,0 +1,7 @@
+#main-container {
+    background-size: cover;
+    background-image: url('../../assets/spyglass4.png');
+    width: auto;
+    height: 100%;
+    background-position: center;
+}

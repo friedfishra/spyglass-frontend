@@ -1,16 +1,37 @@
+#main-container {
+    background-size: cover;
+    background-image: url('../../assets/spyglass4.png');
+    width: auto;
+    height: 100vh;
+    background-position: center;
+}
 .main-container {
     display: flex;
     justify-content: center;
+    
 }
 
 .card-container {
-    width: 75vw;
+    width:100vw;
 }
 
 .vertical {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 25px;
     margin: 20px 0 0 0;
+}
+.label-margin {
+    margin: 0 0 0 0;
+}
+
+.input-margin {
+    display: flex;
+    align-items: center;
+}
+
+.new-goal-modal {
+    width: 42vw;
+    min-height: 60vw;
 }
 

@@ -24,8 +24,9 @@ export class GoalService {
     return this.http.put(`${this.baseUrl}/${goal.id}`, goal);
   }
 
-  deleteGoal(id: number): void {
-    this.http.delete(`${this.baseUrl}/${id}`)
+  deleteGoal(id: number): Observable<any> {
+    console.log(`${this.baseUrl}/${id}`)
+    return this.http.delete(`${this.baseUrl}/${id}`)
   }
 }
 

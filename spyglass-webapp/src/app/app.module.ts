@@ -24,7 +24,7 @@ import {RippleModule} from 'primeng/ripple';
 import {CardModule} from 'primeng/card';
 import {AutoCompleteModule } from "primeng/autocomplete";
 import {ToolbarModule} from 'primeng/toolbar';
-import { MenuItem } from 'primeng/api';
+import { ConfirmationService, MenuItem, MessageService } from 'primeng/api';
 import {ProgressSpinnerModule} from 'primeng/progressspinner';
 import {OverlayPanelModule} from 'primeng/overlaypanel';
 import {InputNumberModule} from 'primeng/inputnumber';
@@ -34,6 +34,9 @@ import {MessagesModule} from 'primeng/messages';
 import {FileUploadModule} from 'primeng/fileupload';
 import {ToastModule} from 'primeng/toast';
 import {FilterService} from 'primeng/api';
+import { HomepageComponent } from './homepage/homepage.component';
+import { HistoryComponent } from './history/history.component';
+
 
 
 @NgModule({
@@ -41,6 +44,8 @@ import {FilterService} from 'primeng/api';
     AppComponent,
     NavBarComponent,
     GoalsComponent,
+    HomepageComponent,
+    HistoryComponent,
     
   ],
   imports: [
@@ -73,7 +78,7 @@ import {FilterService} from 'primeng/api';
     ToastModule
 
   ],
-  providers: [],
+  providers: [MessageService, ConfirmationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

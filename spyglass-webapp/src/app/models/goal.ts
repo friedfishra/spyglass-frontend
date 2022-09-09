@@ -4,19 +4,19 @@ export class Goal {
     description: string;
     imagePath: string;
     targetDate: Date;
-    targetAmount: number;
+    targetAmount: any;
     currentAmount: number;
     status: string;
 
     constructor (
         id: number = 0,
-        name: string = 'name',
-        description: string = 'description',
-        imagePath: string = 'path',
+        name: string = '',
+        description: string = '',
+        imagePath: string = '',
         targetDate: Date = new Date(),
-        targetAmount: number = 0,
+        targetAmount: any = null,
         currentAmount: number = 0,
-        status: string = 'incomplete'
+        status: string = ''
 
     ){
         let yesterday = new Date(targetDate);
