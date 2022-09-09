@@ -76,8 +76,10 @@
                                 <div style="margin-top: 15px;"><p-progressBar [value]="(100* goal.currentAmount/goal.targetAmount) | number : '1.1-2'" ></p-progressBar></div>
                             </td>
                             <td>
-                                <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="editGoal(goal)"></button>
-                                <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteGoal(goal)"></button>
+                                <div class="flex justify-content-center align-items-center" style="margin: 25px 0 0 0;">
+                                    <button pButton pRipple icon="pi pi-pencil" class="p-button-rounded p-button-success mr-2" (click)="editGoal(goal)"></button>
+                                <!-- <button pButton pRipple icon="pi pi-trash" class="p-button-rounded p-button-warning" (click)="deleteGoal(goal)"></button> -->
+                                </div>
                             </td>
                         </tr>
                     </ng-template>

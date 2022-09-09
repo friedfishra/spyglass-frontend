@@ -97,6 +97,8 @@ export class GoalsComponent implements OnInit {
   deleteGoal(goal: Goal) {
     this.goals = this.goals.filter(() => !this.goals.includes(goal));
     this.service.deleteGoal(goal.id).subscribe();
+    
+    
   }
 
   updateAmountSaved(){

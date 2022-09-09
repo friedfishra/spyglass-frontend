@@ -1,4 +1,5 @@
-<div><p-menubar>
+<div>
+    <p-menubar>
     
     <ng-template pTemplate="start">
         <div style="display: flex; justify-content: center; align-items: center;">
@@ -9,9 +10,53 @@
         
     </ng-template>
     <ng-template pTemplate="end">
-        
+        <div style="display: flex; justify-content: flex-end; align-items: center; margin: 5px 45px 5px 0;">
+            <p-menubar [model]="helloUser"></p-menubar>
+        </div>  
+
     </ng-template>
+
+
+
+   
 
    
     
-</p-menubar></div>
+    </p-menubar>
+    
+</div>
+
+<div *ngIf="displayLoginModal">
+    <p-dialog header="Header" [(visible)]="displayLoginModal" [modal]="true" 
+            [draggable]="false" [resizable]="false" [closable]="true" [style]="{width: '32vw', minHeight: '35vh'}" >
+            <ng-template pTemplate="header" width="500">
+                <div class="text-xl font-bold" style="margin: 50px auto 20px auto;">
+                    Spyglass Login
+                </div>
+            </ng-template>
+            <ng-template pTemplate="body">
+                <div class="flex justify-content-center align-items-center">
+                    <div style="margin: 0 0 15px 5px; color: #D0342C;" *ngIf="incorrectCreds" class="font-semibold">Incorrect username or password. Try again.</div>
+                    <div style="margin: 5px;">
+                        <input id="username" type="text" pInputText placeholder="Username" [(ngModel)]="user.username"> 
+                    <!-- <label for="float-input">Username</label> -->
+                    </div>
+                    <div style="margin: 5px;">
+                        <input id="password" type="password" pInputText placeholder="Password" [(ngModel)]="user.password" (keydown.enter)="signIn()"> 
+                    <!-- <label for="float-input">Password</label> -->
+                    </div>
+                </div>
+
+        </ng-template>
+        <ng-template pTemplate="footer">
+            
+            <p-button icon="pi pi-sign-out" label="Sign Out" (click)="signOut()" styleClass="p-button-text"></p-button>
+            <p-button icon="pi pi-check"  (click)="signIn()"  label="Login" styleClass="p-button-text"></p-button>
+        
+        </ng-template>
+            
+        
+    </p-dialog>
+    
+
+</div>
