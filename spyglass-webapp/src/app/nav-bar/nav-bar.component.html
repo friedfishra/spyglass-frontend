@@ -1,27 +1,20 @@
 <div>
     <p-menubar>
     
-    <ng-template pTemplate="start">
-        <div style="display: flex; justify-content: center; align-items: center;">
-            <span><img src="../../assets/spyglass2.png" class="mr-2" style="margin-left: 10px; height: 70px;"></span>
-            <p-menubar [model]="items"></p-menubar>
-            <span class="text-3xl" style="margin: 0px 200px 0px 20px;"></span>
-        </div>
-        
-    </ng-template>
-    <ng-template pTemplate="end">
-        <div style="display: flex; justify-content: flex-end; align-items: center; margin: 5px 45px 5px 0;">
-            <p-menubar [model]="helloUser"></p-menubar>
-        </div>  
+        <ng-template pTemplate="start">
+            <div style="display: flex; justify-content: center; align-items: center;">
+                <span><img src="../../assets/spyglass2.png" class="mr-2" style="margin-left: 10px; height: 70px;"></span>
+                <p-menubar [model]="items"></p-menubar>
+                <span class="text-3xl" style="margin: 0px 200px 0px 20px;"></span>
+            </div>
+            
+        </ng-template>
+        <ng-template pTemplate="end">
+            <div style="display: flex; justify-content: flex-end; align-items: center; margin: 5px 45px 5px 0;">
+                <p-menubar [model]="helloUser"></p-menubar>
+            </div>  
 
-    </ng-template>
-
-
-
-   
-
-   
-    
+        </ng-template>
     </p-menubar>
     
 </div>
